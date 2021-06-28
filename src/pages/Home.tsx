@@ -13,7 +13,15 @@ import "../styles/auth.scss"
 export function Home() {
     // Criando um HOOK e todo hook tem que
     // Está dentro do componentes
+    // Crio a função de navegar e disparo no botão
     const history = useHistory()
+
+    function handleCreateRoom() {
+        // Autenticação do usuário
+        
+
+        history.push('/rooms/new')
+    }
     
     return (
         <div id="page-auth">
@@ -25,7 +33,7 @@ export function Home() {
             <main>
                 <div className="main-content">
                     <img src={logoImg} alt="Letmeask" />
-                    <button className="create-room">
+                    <button onClick={ handleCreateRoom } className="create-room">
                         <img src={googleIconImg} alt="Logo do google" />
                         Crie sua sala com o Google
                     </button>
