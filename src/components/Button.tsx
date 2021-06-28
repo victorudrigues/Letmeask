@@ -1,17 +1,18 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes } from "react"
 
-import '../styles/button.scss'
-// COMPONENETES BUTTON
-// Repassando as proriedades da função butão para o botão
-// Escrevo o tipo da propriedade e passo os tipos para o ...props:
-// Atraves da biblioteca ButtonsAtribitte
+import "../styles/button.scss"
+// Criando um componentes button 
+// Passando props para esse botão
+// Copiando as propriedasdes para todos os botão
+// ...props (Distribuindo todas as propriedades)
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-export function Button( props: ButtonProps ) {
+export function Button(props: ButtonProps) {
     return (
-        <button className="button" {...props}/>
+        <button className="button" {...props} />
     )
+    
 }
 
- <Button />
+<Button />

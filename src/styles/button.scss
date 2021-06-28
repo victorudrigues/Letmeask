@@ -6,12 +6,12 @@
     background: #835afd;
     color: #fff;
 
-    // Para deixar os espaços mais livres nas laterais
-    padding:  32px;
-
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // Para as letras não ficar coladas nas laterais
+    padding: 0 32px;
 
     cursor: pointer;
     border: 0;
@@ -23,8 +23,8 @@
         margin-right: 8px;
     }
 
-    // Escurecer o botão do google
-    &:not(:disabled):hover{
+    // se o botão nn tiver desabled quando ele receber um ação ele mudará de cor
+    &:not(:disabled):hover {
         filter: brightness(0.9);
     }
 
