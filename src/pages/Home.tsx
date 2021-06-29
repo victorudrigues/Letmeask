@@ -1,5 +1,7 @@
 import { useHistory } from 'react-router-dom';
 
+import { auth, firebase } from '../services/firebase'
+
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
@@ -17,10 +19,16 @@ export function Home() {
     const history = useHistory()
 
     function handleCreateRoom() {
-        // Autenticação do usuário
+        // Autenticação do usuário com o google
+        const provider = new firebase.auth.GoogleAuthProvider()
         
+        // Abrindo o login do google como popup
+        // E depois do login vou ter um resultado
+        auth.signInWithPopup(provider).then( result => {
+            console.log( result )
+        })
 
-        history.push('/rooms/new')
+        // history.push('/rooms/new')
     }
     
     return (
