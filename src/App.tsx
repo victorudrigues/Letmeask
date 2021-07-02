@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 import { BrowserRouter, Route } from 'react-router-dom'
 
@@ -32,6 +32,33 @@ function App() {
 
   // Criando um estado para o valor do context
   const [user, setUser] = useState<User>()
+
+  // Recuperando os dados depois do reset
+  // Primeiro parametro qual função quero executar
+  // Segundo Parametro será quando eu vou querer executar
+  // Será sempre um array
+  // Deixando o array Vazio para disparar apenas 1 vez
+  useEffect(() => {
+    // OnAth... escuta oq estará acontecendo
+    // If está verificando se tem alguma coisa dentro de user
+    auth.onAuthStateChanged(user => {
+      if (user) {
+       const { displayName, photoURL, uid } = user
+
+       // Se o usuário nn tiver foto ou nome vou passar um tratamento de erro
+        if (!displayName || !photoURL) {
+          throw new Error('Missing information from Google Account.')
+        }
+
+        // Chamo a função e passo todas as constantes
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL
+        })
+       }
+    })
+  }, [])
 
   // Crian uma função login
   async function signInWithGoogle() {
